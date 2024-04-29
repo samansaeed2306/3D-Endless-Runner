@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 
     private int desiredLane = 1;//0 for right and 2 for left;
     public float laneDistance = 4; //distance btw two lanes
+    public float JumpForce;
+    public float Gravity = -20;
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -19,7 +21,15 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         direction.z = forwardSpeed;
-
+        
+        if(controller.isGrounded){
+            direction.y = -1;
+            if(Input.GetKeyDown(KeyCode.UpArrow)){
+                Jump();
+        }
+        }else{
+            direction.y += Gravity*Time.deltaTime;
+        }
         //get input for the desiredLane
         if(Input.GetKeyDown(KeyCode.RightArrow)){
             desiredLane++;
@@ -49,6 +59,8 @@ public class PlayerController : MonoBehaviour
     {
         controller.Move(direction*Time.fixedDeltaTime);
     }
-
+    private void Jump(){
+        direction.y = JumpForce;
+    }
 
 }
