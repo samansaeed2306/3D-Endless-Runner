@@ -294,3 +294,4 @@
 /define:CSHARP_7_3_OR_NEWER
 Assets\Scripts\CameraController.cs
 Assets\Scripts\PlayerController.cs
+Assets\Scripts\TileManager.cs
