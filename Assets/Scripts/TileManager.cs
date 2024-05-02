@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class TileManager : MonoBehaviour
 {
-    public GameObject[] titlePrefabs;
+    public GameObject[] tilePrefabs;
     public float zSpawn = 0;
     public float tileLength = 30;
     public int numberOfTiles = 5;
 
+    public Transform playerTransform;
+    private List<GameObject> activeTiles = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
-        if (titlePrefabs.Length == 0)
-        {
-            Debug.LogError("No tile prefabs assigned to TileManager.");
-            return;
-        }
 
         for (int i = 0; i < numberOfTiles; i++)
         {
@@ -26,7 +23,7 @@ public class TileManager : MonoBehaviour
             }
             else
             {
-                int randomIndex = Random.Range(0, titlePrefabs.Length);
+                int randomIndex = Random.Range(0, tilePrefabs.Length);
                 SpawnTile(randomIndex);
             }
         }
@@ -35,12 +32,24 @@ public class TileManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (playerTransform.position.z - 35 > zSpawn - (numberOfTiles * tileLength))
+        {
+            SpawnTile(Random.Range(0, tilePrefabs.Length));
+            DeleteTile();
+        }
     }
 
-    public void SpawnTile(int titleIndex)
+    public void SpawnTile(int tileIndex)
     {
-        Instantiate(titlePrefabs[titleIndex], transform.forward * zSpawn, transform.rotation);
+        GameObject go = Instantiate(tilePrefabs[tileIndex], transform.forward * zSpawn, transform.rotation);
+        activeTiles.Add(go);
         zSpawn += tileLength;
+    }
+
+    private void DeleteTile()
+    {
+        Destroy(activeTiles[0]);
+        activeTiles.RemoveAt(0);
+
     }
 }

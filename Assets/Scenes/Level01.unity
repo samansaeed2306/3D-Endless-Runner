@@ -256,16 +256,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f125ae27b06dfc408bb508a96cd6f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titlePrefabs:
+  tilePrefabs:
   - {fileID: 38476785408272318, guid: 939c1c4d64eb9054891c02243d9001bf, type: 3}
   - {fileID: 5907157949365219645, guid: 6e27a484f279f024dab0bcd9017f3e47, type: 3}
   - {fileID: 8551165973728080771, guid: 47fbfa7d9d0e54a45ab5408ef32641c6, type: 3}
   - {fileID: 7143147129009898969, guid: 7e92ff3ca87ea144f885a9283eabce53, type: 3}
-  - {fileID: 3770561038498227321, guid: 31902f041a49ee447ba524d4600b9ff8, type: 3}
   - {fileID: 2070222087629112599, guid: 1aa4f043f7a7e65448226d31a01bbbff, type: 3}
+  - {fileID: 3770561038498227321, guid: 31902f041a49ee447ba524d4600b9ff8, type: 3}
   zSpawn: 0
   tileLength: 30
   numberOfTiles: 5
+  playerTransform: {fileID: 1156158510}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
